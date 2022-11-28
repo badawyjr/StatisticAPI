@@ -29,8 +29,18 @@ public class StatsController {
     }
 
     @PostMapping(value = "/Stats")
-    public void addStat(@RequestBody Stats stat){
-        dao.addStat(stat);
+    public void addStat(@RequestBody String data){
+        dao.addStat(data);
+    }
+
+    @PutMapping(value = "/Stats/{id}")
+    public void updateStat(@PathVariable int id, @RequestBody String data){
+        dao.updateStat(id,data);
+    }
+
+    @DeleteMapping(value = "/Stats/{id}")
+    public void deleteStat(@PathVariable int id){
+        dao.deleteStat(id);
     }
 
 }

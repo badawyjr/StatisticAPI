@@ -58,4 +58,15 @@ public class CSV {
         return data;
     }
 
+    public void updateCSV(String Data){
+        File myObj = new File("src/main/resources/csv/file"+id+".csv");
+        myObj.delete();
+        writeCSV(Data);
+    }
+
+    public void deleteCSV(){
+        File myObj = new File("src/main/resources/csv/file"+id+".csv");
+        myObj.delete();
+    }
+
 }

@@ -13,9 +13,9 @@ public class StatsDAO implements IStatsDAO{
     public static int idctr = 1;
 
     public StatsDAO(){
-        this.addStat(new Stats());
-        this.addStat(new Stats());
-        this.addStat(new Stats());
+        this.addStat("test1");
+        this.addStat("test2");
+        this.addStat("test3");
     }
 
     // Find all statistics
@@ -33,18 +33,28 @@ public class StatsDAO implements IStatsDAO{
         return null;
     }
 
+
     // Add new statistic
-    public void addStat(Stats stat){
-        System.out.println("Add");
-        stats.add(stat);
-        for (Stats stats : stats){
-            System.out.println(stats.getId());
-        }
+    public void addStat(String data){
+        stats.add(new Stats(data));
         idctr++;
     }
 
+    public void updateStat(int id,String data){
+        for(Stats stat : stats) {
+            if(stat.getId() == id) {
+                stat.setData(data);
+            }
+        }
+    }
+
     //Delete a statistic
-    void deleteStat(Stats stat){
-        stats.remove(stat);
+    public void deleteStat(int id){
+
+        for(Stats stat : stats) {
+            if (stat.getId() == id) {
+                stats.remove(stat);
+            }
+        }
     }
 }

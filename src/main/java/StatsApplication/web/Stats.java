@@ -12,9 +12,9 @@ public class Stats {
     private CSV csv;
 
 
-    public Stats() {
+    public Stats(String data) {
         this.id = idctr;
-        this.csv = new CSV(id,"Test");
+        this.csv = new CSV(id,data);
 
     }
 
@@ -22,7 +22,11 @@ public class Stats {
         return id;
     }
 
-    public List<String> getCsv() throws Exception {
+    public void setData(String data) {
+        csv.updateCSV(data);
+    }
+
+    public List<String> getcsv() throws Exception {
         return this.csv.readCSV();
     }
 }
