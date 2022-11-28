@@ -1,8 +1,10 @@
-package StatsApplication;
+package StatsApplication.web;
+
+import StatsApplication.model.CSV;
 
 import java.util.List;
 
-import static StatsApplication.StatsDAO.idctr;
+import static StatsApplication.dao.StatsDAO.*;
 
 public class Stats {
 
@@ -10,9 +12,9 @@ public class Stats {
     private CSV csv;
 
 
-    public Stats() throws Exception {
+    public Stats() {
         this.id = idctr;
-        this.csv = new CSV(id);
+        this.csv = new CSV(id,"Test");
 
     }
 
@@ -23,9 +25,4 @@ public class Stats {
     public List<String> getCsv() throws Exception {
         return this.csv.readCSV();
     }
-
-
-
-
-
 }

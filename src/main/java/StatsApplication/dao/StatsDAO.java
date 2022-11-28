@@ -1,28 +1,30 @@
-package StatsApplication;
+package StatsApplication.dao;
 
+import StatsApplication.web.Stats;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class StatsDAO {
+public class StatsDAO implements IStatsDAO{
 
     List<Stats> stats = new ArrayList<>();
-    static int idctr = 1;
+    public static int idctr = 1;
 
-    public StatsDAO() throws Exception {
+    public StatsDAO(){
+        this.addStat(new Stats());
         this.addStat(new Stats());
         this.addStat(new Stats());
     }
 
     // Find all statistics
-    List<Stats> findAll(){
+    public List<Stats> findAll(){
         return stats;
     }
 
     // Find a statistic by id
-    Stats findById(int id){
+    public Stats findById(int id){
         for(Stats stat : stats) {
             if(stat.getId() == id) {
                 return stat;
@@ -32,8 +34,12 @@ public class StatsDAO {
     }
 
     // Add new statistic
-    void addStat(Stats stat){
+    public void addStat(Stats stat){
+        System.out.println("Add");
         stats.add(stat);
+        for (Stats stats : stats){
+            System.out.println(stats.getId());
+        }
         idctr++;
     }
 

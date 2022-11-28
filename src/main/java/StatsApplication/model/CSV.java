@@ -1,4 +1,4 @@
-package StatsApplication;
+package StatsApplication.model;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -9,9 +9,9 @@ public class CSV {
 
     private int id;
 
-    public CSV(int id){
+    public CSV(int id, String data){
         this.id = id;
-        this.writeCSV();
+        this.writeCSV(data);
     }
 
     //Create a new CSV File
@@ -27,11 +27,11 @@ public class CSV {
 
     //Write Date to the file
 
-    public void writeCSV(){
+    public void writeCSV(String Data){
         this.createCSV();
         try {
             FileWriter myWriter = new FileWriter("src/main/resources/csv/file"+id+".csv");
-            myWriter.write("DATA");
+            myWriter.write(Data);
             myWriter.close();
 
         } catch (IOException e) {
